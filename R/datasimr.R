@@ -81,7 +81,7 @@ genData <- function(sims,n) {
         if (sims[[name]][[1]] == "factor" | sims[[name]][[1]] == "character" | sims[[name]][[1]] == "numeric-factor" ) {
             dta[[name]] = sample(sims[[name]][["levels"]],n,replace=T, prob = sims[[name]][["probs"]])
         } else if (sims[[name]][[1]] == "numeric-double" ) {
-            
+            dta[[name]] = rnorm
         }
     }
     return(dta)
