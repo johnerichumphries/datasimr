@@ -4,6 +4,7 @@
 
 A package to take a data.frame and generate simulated data. The end goal is to have a "test" data set that cannot be used to identify an individual in sensitive data, but can be used for developing / debugging software. 
 
+**No warrenty or guaranett of any kind associated with this software**
 **I make no claim that the output of  this code will comply with any privacy regulations of any sort**
 
 Right now the code will generate a new data frame from a provided data frame. THE USER IS REQUIRED TO REMOVE SENSITIVE COLUMNS LIKE ADDRESS OR ID.
