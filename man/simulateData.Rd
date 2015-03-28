@@ -9,12 +9,13 @@ simulateData(data, missingness = F, discreteLength = 100)
 \item{data}{the data frame we want to learn from.}
 }
 \value{
-Returns a list that can be passed to genData to generate simulated data.
+Returns a function taken \code{n} as an input, whcih is number of observations
 }
 \description{
 Simulates data with matching variable names and characteristics
 }
 \examples{
-simulateData(iris)
+genData <- simulateData(iris)
+genData(100)
 }
 

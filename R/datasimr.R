@@ -22,9 +22,10 @@ testInteger <- function(x){
 
 #' Simulates data with matching variable names and characteristics
 #' @param data the data frame we want to learn from. 
-#' @return Returns a list that can be passed to genData to generate simulated data.
+#' @return Returns a function taken \code{n} as an input, whcih is number of observations
 #' @examples
-#' simulateData(iris)
+#' genData <- simulateData(iris)
+#' genData(100)
 simulateData <- function(data,missingness=F,discreteLength=100){
     sims = list()
     if (3==3) {
@@ -70,23 +71,21 @@ simulateData <- function(data,missingness=F,discreteLength=100){
         }
     }
     # passing back a function to generate data. 
-    genData <- function(n) .genData(sims,n)
-}
-
-
-
-.genData <- function(sims,n) {
-    dta <- list()
-    names <- names(sims)
-    for (name in names) {
-        if (sims[[name]][[1]] == "factor" | sims[[name]][[1]] == "character" | sims[[name]][[1]] == "numeric-factor" ) {
-            dta[[name]] = sample(sims[[name]][["levels"]],n,replace=T, prob = sims[[name]][["probs"]])
-        } else if (sims[[name]][[1]] == "numeric-double" ) {
-            dta[[name]] = rnorm
+    genData <- function(sims) { 
+            function(n) {
+            dta <- list()
+            names <- names(sims)
+            for (name in names) {
+                if (sims[[name]][[1]] == "factor" | sims[[name]][[1]] == "character" | sims[[name]][[1]] == "numeric-factor" ) {
+                    dta[[name]] = sample(sims[[name]][["levels"]],n,replace=T, prob = sims[[name]][["probs"]])
+                } else if (sims[[name]][[1]] == "numeric-double" ) {
+                    dta[[name]] = rnorm
+                }
+            }
+            return(dta)
         }
     }
-    return(dta)
+    return(genData(sims))
 }
 
-sims= simulateData(iris)
-genData(sims,10)
+

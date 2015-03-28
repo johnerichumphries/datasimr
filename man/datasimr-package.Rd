@@ -3,31 +3,32 @@
 \alias{datasimr}
 \docType{package}
 \title{
-What the package does (short line)
-~~ package title ~~
+A package for simulating random data from a given data frame
 }
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+Takes a data frame and generates fake data that has the same variables with similar type, but all random.
+
+Useful for debugging secure code.
+
+No guanrantee or warrenty of any kind on the safety / security / privacy features of this code.
 }
 \details{
 \tabular{ll}{
 Package: \tab datasimr\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 0.3\cr
 Date: \tab 2015-03-27\cr
-License: \tab What license is it under?\cr
+License: \tab MIT\cr
 }
-~~ An overview of how to use the package, including the most important functions ~~
+\code{simulateData} takes a data frame and returns a function that will generate n observations from a fake data set. 
 }
 \author{
-Who wrote it
+John Eric Humphries
 
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
+Maintainer: johneric@uchicago.edu
 }
 \references{
-~~ Literature or other references for background information ~~
+
 }
 ~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R documentation directory ~~
 \keyword{ package }
@@ -36,5 +37,8 @@ Maintainer: Who to complain to <yourfault@somewhere.net>
 ~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
 }
 \examples{
-~~ simple examples of the most important functions ~~
+#make: the function genData for the iris data set
+genData <- simulateData(iris)
+#genereate a data.frame with 100 draws from the fake data
+genData(100) 
 }
