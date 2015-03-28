@@ -1,0 +1,10 @@
+Package: datasimr
+Type: Package
+Title: Simulate Random Data given some dataframe
+Version: 0.1
+Date: 2015-03-27
+Author: John Eric Humpphries
+Maintainer: Who to complain to <johneric@uchicago.edu>
+Description: This package includes a function that takes a data set and
+    produces a random data set with similar characteristics and the
+License: MIT
