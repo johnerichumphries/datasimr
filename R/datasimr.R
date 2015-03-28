@@ -82,7 +82,7 @@ simulateData <- function(data,missingness=F,discreteLength=100){
                     dta[[name]] = rnorm
                 }
             }
-            return(dta)
+            return(as.data.frame(dta))
         }
     }
     return(genData(sims))
