@@ -22,9 +22,9 @@ testInteger <- function(x){
 
 #' Simulates data with matching variable names and characteristics
 #' @param data the data frame we want to learn from. 
-#' @return Returns a simulated data frame.
+#' @return Returns a list that can be passed to genData to generate simulated data.
 #' @examples
-#' simulateData(data,3)
+#' simulateData(iris)
 simulateData <- function(data,missingness=F,discreteLength=100){
     sims = list()
     if (3==3) {
@@ -69,12 +69,13 @@ simulateData <- function(data,missingness=F,discreteLength=100){
                 }
         }
     }
-    return(sims)
+    # passing back a function to generate data. 
+    genData <- function(n) .genData(sims,n)
 }
 
-sims= simulateData(iris)
 
-genData <- function(sims,n) {
+
+.genData <- function(sims,n) {
     dta <- list()
     names <- names(sims)
     for (name in names) {
@@ -87,4 +88,5 @@ genData <- function(sims,n) {
     return(dta)
 }
 
+sims= simulateData(iris)
 genData(sims,10)
