@@ -16,3 +16,4 @@ Features not yet implemented:
 * the option to include missingness
 * the option to specify which columns of the input data.frame to exclude
 * additional features for panel data
+* the option to "bin" some continuous variables and draw from thoses bins (maybe with noise), rather than assuming normality.
